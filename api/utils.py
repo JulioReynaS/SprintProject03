@@ -21,6 +21,7 @@ def allowed_file(filename):
     # TODO
     # Check if the file extension is allowed
     filename = filename.lower()
+    
     if filename.endswith(".png") or filename.endswith(".jpg") or filename.endswith(".jpeg") or filename.endswith(".gif"):
         return True
     else:
