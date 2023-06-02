@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 pytest==7.1.2
 requests==2.28.1
+=======
+pytest==7.1.2 --trusted-host pypi.org --trusted-host files.pythonhosted.org
+requests==2.28.1 --trusted-host pypi.org --trusted-host files.pythonhosted.org
+>>>>>>> 2ca48ea (Final commit)

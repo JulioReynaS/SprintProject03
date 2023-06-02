@@ -1,7 +1,12 @@
 FROM python:3.8.13 as base
 
+<<<<<<< HEAD
 ARG UID
 ARG GID
+=======
+ARG UID=1000
+ARG GID=1000
+>>>>>>> 2ca48ea (Final commit)
 
 # Add a non-root user
 RUN addgroup --gid $GID app
@@ -13,7 +18,12 @@ USER app
 ENV PYTHONPATH=$PYTHONPATH:/src/
 ENV PATH=$PATH:/home/app/.local/bin/
 
+<<<<<<< HEAD
 COPY ./ /src
+=======
+COPY --chown=app:app ./ /src
+#COPY ./ /src
+>>>>>>> 2ca48ea (Final commit)
 
 WORKDIR /src
 
@@ -23,4 +33,8 @@ FROM base as test
 RUN ["pytest", "-v", "/src/tests"]
 
 FROM base as build
+<<<<<<< HEAD
 ENTRYPOINT ["gunicorn", "--workers=8", "--bind", "0.0.0.0:5000", "app:app"]
+=======
+ENTRYPOINT ["gunicorn", "--workers=8", "--bind", "0.0.0.0:5000", "--timeout", "300", "app:app"]
+>>>>>>> 2ca48ea (Final commit)

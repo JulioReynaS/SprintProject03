@@ -1,5 +1,8 @@
 # Sprint project 03
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2ca48ea (Final commit)
 > Flask ML API
 
 ## The Business problem
@@ -17,7 +20,10 @@ You shouldn't worry for now about the TensorFlow CNN because we will use a pre-t
 ## Technical aspects
 
 To develop this solution you will need to have a proper working environment setup in your machine consisting of:
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2ca48ea (Final commit)
 - Docker
 - docker-compose
 - VS Code or any other IDE of your preference
@@ -26,7 +32,10 @@ To develop this solution you will need to have a proper working environment setu
 Please make sure to carefully read the `ASSIGNMENT.md` file which contains detailed instructions about the code you have to complete to make the project run correctly.
 
 The technologies involved are:
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2ca48ea (Final commit)
 - Python is the main programming language
 - Flask framework for the API
 - HTML for the web UI
@@ -43,7 +52,10 @@ $ cp .env.original .env
 ```
 
 Only for mac M1 users:
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2ca48ea (Final commit)
 - There is dockerfile for M1 macs model/Dockerfile.M1. This docker file downloads tensoflow compiled for M1
 - Change docker-compose.yaml to use that docker file.
 - Remove tensorflow for requirements.txt
@@ -80,11 +92,18 @@ Following a style guide keeps the code's aesthetics clean and improves readabili
 We use [Black](https://black.readthedocs.io/) and [isort](https://pycqa.github.io/isort/) for automated code formatting in this project, you can run it with:
 
 ```console
+<<<<<<< HEAD
 $isort --profile=black . && black --line-length 88 .
 ```
 
 Wanna read more about Python code style and good practices? Please see:
 
+=======
+$ isort --profile=black . && black --line-length 88 .
+```
+
+Wanna read more about Python code style and good practices? Please see:
+>>>>>>> 2ca48ea (Final commit)
 - [The Hitchhiker’s Guide to Python: Code Style](https://docs.python-guide.org/writing/style/)
 - [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)
 
@@ -101,8 +120,13 @@ We make use of [multi-stage docker builds](https://docs.docker.com/develop/devel
 Run:
 
 ```bash
+<<<<<<< HEAD
 $cd api/
 $docker build -t flask_api_test --progress=plain --target test .
+=======
+$ cd api/
+$ docker build -t flask_api_test --progress=plain --target test .
+>>>>>>> 2ca48ea (Final commit)
 ```
 
 You will only need to pay attention to the logs corresponding to the testing code which will look like this:
@@ -132,8 +156,13 @@ You are good if all tests are passing.
 Same as api, run:
 
 ```bash
+<<<<<<< HEAD
 $cd model/
 $docker build -t model_test --progress=plain --target test .
+=======
+$ cd model/
+$ docker build -t model_test --progress=plain --target test .
+>>>>>>> 2ca48ea (Final commit)
 ```
 
 ### 2. Integration end-to-end
@@ -146,13 +175,21 @@ You must have the full pipeline running (see previous section) and the following
 You can install them using the file `tests/requirements.txt` with:
 
 ```bash
+<<<<<<< HEAD
 $pip3 install -r tests/requirements.txt
+=======
+$ pip3 install -r tests/requirements.txt
+>>>>>>> 2ca48ea (Final commit)
 ```
 
 Then, from the project root folder run:
 
 ```
+<<<<<<< HEAD
 $python tests/test_integration.py
+=======
+$ python tests/test_integration.py
+>>>>>>> 2ca48ea (Final commit)
 ```
 
 If the output looks like this, then the integration tests are passing:
@@ -166,6 +203,9 @@ OK
 ```
 
 If you want to learn more about testing Python code, please read:
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2ca48ea (Final commit)
 - [Effective Python Testing With Pytest](https://realpython.com/pytest-python-testing/)
 - [The Hitchhiker’s Guide to Python: Testing Your Code](https://docs.python-guide.org/writing/tests/)

@@ -1,5 +1,8 @@
 # Sprint project 03: Instructions
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2ca48ea (Final commit)
 > Flask ML API
 
 ## Part 1 - Building the basic service
