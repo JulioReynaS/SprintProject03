@@ -22,10 +22,7 @@ services:
     volumes:
       - ./feedback:/src/feedback
       - ./uploads:/src/static/uploads
-<<<<<<< HEAD
-=======
     #command: gunicorn app:app --timeout 100
->>>>>>> 2ca48ea (Final commit)
 
   redis:
     image: redis:6.2.6

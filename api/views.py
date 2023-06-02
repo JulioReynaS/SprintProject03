@@ -50,16 +50,9 @@ def index():
             #   3. Send the file to be processed by the `model` service
             #   4. Update `context` dict with the corresponding values
             file_hash = utils.get_file_hash(file)
-<<<<<<< HEAD
-            dst_filepath = os.path.join(current_app.config["UPLOAD_FOLDER"], file_hash)
-            if not os.path.exists(dst_filepath):
-                file.save(dst_filepath)
-            flash("Image successfully uploaded and displayed below")
-=======
             dst_filepath = os.path.join(settings.UPLOAD_FOLDER, file_hash)
             file.save(dst_filepath)
             #flash("Image successfully uploaded and displayed below")
->>>>>>> 2ca48ea (Final commit)
             prediction, score = model_predict(file_hash)
             context = {
                 "prediction": prediction,
@@ -67,11 +60,7 @@ def index():
                 "filename": file_hash,
             }
             return render_template("index.html", filename=file_hash, context=context)
-<<<<<<< HEAD
-        # File received and but it isn't an image
-=======
         # File received and but if it isn't an image
->>>>>>> 2ca48ea (Final commit)
         else:
             flash("Allowed image types are -> png, jpg, jpeg, gif")
             return redirect(request.url)
@@ -161,13 +150,8 @@ def feedback():
     # already provided in settings.py module (settings.FEEDBACK_FILEPATH)
     # TODO
     if report:
-<<<<<<< HEAD
-        with open(settings.FEEDBACK_FILEPATH, 'a') as f:
-            f.write(report + '\n')
-=======
         with open(settings.FEEDBACK_FILEPATH, "a") as f:
             f.write(report + "\n")
->>>>>>> 2ca48ea (Final commit)
 
     # Don't change this line
     return render_template("index.html")

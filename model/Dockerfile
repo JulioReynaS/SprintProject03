@@ -1,12 +1,7 @@
 FROM python:3.8.13 as base
 
-<<<<<<< HEAD
-ARG UID
-ARG GID
-=======
 ARG UID=1000
 ARG GID=1000
->>>>>>> 2ca48ea (Final commit)
 
 # Add a non-root user
 RUN addgroup --gid $GID app
@@ -23,12 +18,8 @@ RUN pip3 install -r requirements.txt
 
 ENV PYTHONPATH=$PYTHONPATH:/src/
 
-<<<<<<< HEAD
-COPY ./ /src/
-=======
 COPY --chown=app:app ./ /src
 #COPY ./ /src/
->>>>>>> 2ca48ea (Final commit)
 
 WORKDIR /src
 

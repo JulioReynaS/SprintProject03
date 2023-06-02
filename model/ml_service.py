@@ -5,10 +5,7 @@ import time
 import numpy as np
 import redis
 import settings
-<<<<<<< HEAD
-=======
 #os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
->>>>>>> 2ca48ea (Final commit)
 from tensorflow.keras.applications import ResNet50
 from tensorflow.keras.applications.resnet50 import decode_predictions, preprocess_input
 from tensorflow.keras.preprocessing import image
@@ -16,35 +13,19 @@ from tensorflow.keras.preprocessing import image
 # TODO
 # Connect to Redis and assign to variable `db``
 # Make use of settings.py module to get Redis settings like host, port, etc.
-<<<<<<< HEAD
-db = None
-=======
->>>>>>> 2ca48ea (Final commit)
 db = redis.Redis(
     host=settings.REDIS_IP,
     port=settings.REDIS_PORT,
     db=settings.REDIS_DB_ID,
-<<<<<<< HEAD
-=======
     decode_responses=True,
->>>>>>> 2ca48ea (Final commit)
 )
 
 # TODO
 # Load your ML model and assign to variable `model`
 # See https://drive.google.com/file/d/1ADuBSE4z2ZVIdn66YDSwxKv-58U7WEOn/view?usp=sharing
 # for more information about how to use this model.
-<<<<<<< HEAD
-model = None
 model = ResNet50(include_top=True, weights="imagenet")
 
-# Print the model summary
-#model.summary()
-
-=======
-model = ResNet50(include_top=True, weights="imagenet")
-
->>>>>>> 2ca48ea (Final commit)
 def predict(image_name):
     """
     Load image from the corresponding folder based on the image name
@@ -65,27 +46,6 @@ def predict(image_name):
     pred_probability = None
 
     # TODO
-<<<<<<< HEAD
-
-    # Loading the image with a target size of (224, 224)
-    img_path = os.path.join(settings.UPLOAD_FOLDER, image_name)
-    img = image.load_img(img_path, target_size=(224, 224))
-
-    # Convert the image to a numpy array
-    x = image.img_to_array(img)
-    
-    # Add a dimension to the array (as required by the model)
-    x_batch = np.expand_dims(x, axis=0)
-    # Preprocess the input image
-    x_batch = preprocess_input(x_batch)
-
-    preds = model.predict(x_batch)
-    fst_pred = decode_predictions(preds, top=1)
-    class_name = fst_pred[0][0][1]
-    pred_probability = np.round(fst_pred[0][0][2], 4)
-
-    return class_name, float(pred_probability)
-=======
     try:
         # Load image
         img = image.load_img(
@@ -110,7 +70,6 @@ def predict(image_name):
         pred_probability = 0
         
     return class_name, pred_probability
->>>>>>> 2ca48ea (Final commit)
 
 
 def classify_process():
@@ -140,20 +99,6 @@ def classify_process():
         #       code with Redis making use of functions `brpop()` and `set()`.
         # TODO
 
-<<<<<<< HEAD
-
-        job = json.loads(db.brpop(settings.REDIS_QUEUE)[1].decode("utf-8"))
-
-        job_id, image_name = job["id"], job["image_name"]
-        class_name, pred_probability = predict(image_name)
-
-        results = {"prediction": class_name, "score": pred_probability}
-
-        db.set(job_id, json.dumps(results))
-
-        # Sleep for a bit
-        time.sleep(settings.SERVER_SLEEP)    
-=======
         # Get a job from the queue
         _, msg = db.brpop(settings.REDIS_QUEUE)
 
@@ -175,7 +120,6 @@ def classify_process():
 
         # Sleep for a bit
         time.sleep(settings.SERVER_SLEEP)
->>>>>>> 2ca48ea (Final commit)
 
 
 if __name__ == "__main__":

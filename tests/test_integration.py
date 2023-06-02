@@ -7,21 +7,13 @@ class TestIntegration(unittest.TestCase):
     def test_index(self):
         response = requests.request(
             "GET",
-<<<<<<< HEAD
-            "http://0.0.0.0/",
-=======
             "http://localhost/",
->>>>>>> 2ca48ea (Final commit)
         )
         self.assertEqual(response.status_code, 200)
 
         response = requests.request(
             "POST",
-<<<<<<< HEAD
-            "http://0.0.0.0/",
-=======
             "http://localhost/",
->>>>>>> 2ca48ea (Final commit)
         )
         self.assertEqual(response.status_code, 200)
 
@@ -31,11 +23,7 @@ class TestIntegration(unittest.TestCase):
         payload = {}
         response = requests.request(
             "POST",
-<<<<<<< HEAD
-            "http://0.0.0.0/predict",
-=======
             "http://localhost/predict",
->>>>>>> 2ca48ea (Final commit)
             headers=headers,
             data=payload,
             files=files,

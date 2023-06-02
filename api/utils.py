@@ -19,20 +19,9 @@ def allowed_file(filename):
         True if the file is an image, False otherwise.
     """
     # TODO
-<<<<<<< HEAD
-    # Check if the file extension is allowed
-    filename = filename.lower()
-    
-    if filename.endswith(".png") or filename.endswith(".jpg") or filename.endswith(".jpeg") or filename.endswith(".gif"):
-        return True
-    else:
-        return False
-    
-=======
     ALLOWED_EXTENSIONS = set(["png", "jpg", "jpeg", "gif"])
     filename_ext = os.path.splitext(filename)[-1].lower()
     return filename_ext[1:] in ALLOWED_EXTENSIONS
->>>>>>> 2ca48ea (Final commit)
 
 
 def get_file_hash(file):

@@ -8,15 +8,6 @@ import settings
 # TODO
 # Connect to Redis and assign to variable `db``
 # Make use of settings.py module to get Redis settings like host, port, etc.
-<<<<<<< HEAD
-db = None
-db = redis.Redis(
-    host=settings.REDIS_IP,
-    port=settings.REDIS_PORT,
-    db=settings.REDIS_DB_ID
-)
-
-=======
 db = redis.Redis(
     host=settings.REDIS_IP,
     port=settings.REDIS_PORT,
@@ -25,8 +16,6 @@ db = redis.Redis(
     encoding="utf-8"
 )
 
-
->>>>>>> 2ca48ea (Final commit)
 def model_predict(image_name):
     """
     Receives an image name and queues the job into Redis.
@@ -50,13 +39,8 @@ def model_predict(image_name):
     # We need to assing this ID because we must be able to keep track
     # of this particular job across all the services
     # TODO
-<<<<<<< HEAD
-    job_id = None
-    job_id = 
-=======
     job_id  = str(uuid4())
 
->>>>>>> 2ca48ea (Final commit)
     # Create a dict with the job data we will send through Redis having the
     # following shape:
     # {
@@ -64,51 +48,31 @@ def model_predict(image_name):
     #    "image_name": str,
     # }
     # TODO
-<<<<<<< HEAD
-    job_data = None
-=======
     job_data = {
         "id": job_id,
         "image_name": image_name
     }
->>>>>>> 2ca48ea (Final commit)
 
     # Send the job to the model service using Redis
     # Hint: Using Redis `lpush()` function should be enough to accomplish this.
     # TODO
-<<<<<<< HEAD
-    db.lpush(...)
-
-    # Loop until we received the response from our ML model
-=======
     db.lpush(settings.REDIS_QUEUE, json.dumps(job_data))
 
     # Loop until we received the response from our ML model
 
->>>>>>> 2ca48ea (Final commit)
     while True:
         # Attempt to get model predictions using job_id
         # Hint: Investigate how can we get a value using a key from Redis
         # TODO
-<<<<<<< HEAD
-        output = None
-=======
         
         output = db.get(job_id)
->>>>>>> 2ca48ea (Final commit)
 
         # Check if the text was correctly processed by our ML model
         # Don't modify the code below, it should work as expected
         if output is not None:
-<<<<<<< HEAD
-            output = json.loads(output.decode("utf-8"))
-            prediction = output["prediction"]
-            score = output["score"]
-=======
             output = json.loads(output)
             prediction = str(output["prediction"])
             score = float(output["score"])
->>>>>>> 2ca48ea (Final commit)
 
             db.delete(job_id)
             break
